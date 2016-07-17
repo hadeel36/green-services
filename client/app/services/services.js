@@ -1,29 +1,32 @@
 angular.module('GS.services', [])
 
-.factory('Links', function ($http) {
-  var getAll = function () {
-    return $http({
-      method: 'GET',
-      url: '/api/links'
-    })
-    .then(function (resp) {
-      return resp.data;
-    });
-  };
-  var addOne = function (link) {
+.factory('Orders', function ($http) {
+  ////this function must executed when the client press on submit order button and after this save
+  ////the order to the data base
+  var addOneOrder = function (order) {
     return $http({
       method: 'POST',
-      url: '/api/links',
-      data: JSON.stringify(link)
+      url: '/api/orders',
+      data: JSON.stringify(order)
     })
     .then(function (resp) {
       return resp;
     });
   };
-  return {
-    getAll: getAll,
-    addOne: addOne
+return {
+    addOneOrder: addOneOrder
   };
+})
+.factory('Services',function($http){
+  var getAllOrders = function(){
+    return $http({
+      method:'GET',
+      url:'/api/services'
+    })
+  }
+  return {
+    getAllOrders:getAllOrders
+  }
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
@@ -33,10 +36,10 @@ angular.module('GS.services', [])
   // that JWT is then stored in localStorage as 'com.shortly'
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
-  var signin = function (user) {
+  var signinUser = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users/signin',
+      url: '/api/users/signinUsers',
       data: user
     })
     .then(function (resp) {
@@ -44,10 +47,31 @@ angular.module('GS.services', [])
     });
   };
 
-  var signup = function (user) {
+ var signinServiceProvider = function (user) {
     return $http({
       method: 'POST',
-      url: '/api/users/signup',
+      url: '/api/users/signinServiceProvider',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data.token;
+    });
+  };
+
+  var signupUser = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/signupUsres',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data.token;
+    });
+  };
+ var signupServiceProvider = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/signupServiceProvider',
       data: user
     })
     .then(function (resp) {
