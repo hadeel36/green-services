@@ -1,6 +1,8 @@
 angular.module('GS', [
   'GS.services',
   'GS.auth',
+  'GS.Users',
+  'GS.serviceProvider',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
@@ -13,7 +15,22 @@ angular.module('GS', [
       templateUrl: 'app/auth/signupAsUser.html',
       controller: 'AuthController'
     })
-
+    .when ('/signinAsserviceProvidor',{
+      templateUrl: 'app/auth/signinAsserviceProvidor.html',
+      controller: 'AuthController'
+    })
+    .when('/signupAsserviceProvidor',{
+      templateUrl: 'app/auth/signupAsserviceProvidor.html',
+      controller: 'AuthController'
+    })
+    .when('/user',{
+      templateUrl: 'app/Users/Users.html',
+      controller: 'UserController'
+    })
+    .when('/serviceProvider',{
+       templateUrl: 'app/serviceprovider/serviceProvider.html',
+       controller: 'serviceproviderController'
+    })
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
