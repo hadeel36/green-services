@@ -3,7 +3,8 @@ angular.module('GS.Users', [])
 .controller('UserController', function ($scope, Orders) {
   // Your code here
   ///this function must call on submit click
-  var addOrder=function(order){
+  $scope.addOrder=function(order){
+  	console.log('hey')
   	Orders.addOneOrder(order).then(function(){
   	})
   	.catch(function(err){
