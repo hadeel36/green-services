@@ -28,7 +28,7 @@ angular.module('GS', [
       controller: 'UserController'
     })
     .when('/serviceProvider',{
-       templateUrl: 'app/serviceprovider/serviceProvider.html',
+       templateUrl: 'app/serviceProvider/serviceprovider.html',
        controller: 'serviceproviderController'
     })
     // We add our $httpInterceptor into the array

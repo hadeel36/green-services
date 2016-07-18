@@ -24,7 +24,19 @@ return {
       url:'/api/services'
     })
   }
+  var delivered = function (order_id) {
+    console.log(order_id)
+    return $http({
+      method: 'POST',
+      url: '/api/deliverd',
+      data: JSON.stringify(order_id)
+    })
+    .then(function (resp) {
+      return resp;
+    }); 
+  } 
   return {
+    delivered:delivered,
     getAllOrders:getAllOrders
   }
 })
