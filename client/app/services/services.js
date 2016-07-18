@@ -90,8 +90,10 @@ return {
 
 
   return {
-    signin: signin,
-    signup: signup,
+    signinUser: signinUser,
+    signupUser: signupUser,
+    signinServiceProvider: signinServiceProvider,
+    signupServiceProvider: signupServiceProvider,
     isAuth: isAuth,
     signout: signout
   };

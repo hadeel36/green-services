@@ -15,12 +15,12 @@ angular.module('GS', [
       templateUrl: 'app/auth/signupAsUser.html',
       controller: 'AuthController'
     })
-    .when ('/signinAsserviceProvidor',{
-      templateUrl: 'app/auth/signinAsserviceProvidor.html',
+    .when ('/signinAsserviceProvider',{
+      templateUrl: 'app/auth/signinAsserviceProvider.html',
       controller: 'AuthController'
     })
-    .when('/signupAsserviceProvidor',{
-      templateUrl: 'app/auth/signupAsserviceProvidor.html',
+    .when('/signupAsserviceProvider',{
+      templateUrl: 'app/auth/signupAsserviceProvider.html',
       controller: 'AuthController'
     })
     .when('/user',{
@@ -62,7 +62,7 @@ angular.module('GS', [
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-      $location.path('/signin');
+      $location.path('/signinAsUser');
     }
   });
 });
